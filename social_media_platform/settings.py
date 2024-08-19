@@ -32,7 +32,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,9 +43,14 @@ INSTALLED_APPS = [
     'comments',
     'notifications',
     'friends',
+    'authentication',
 ]
 
-
+JAZZMIN_SETTINGS = {
+    'site_title': 'My Admin',
+    'site_header': 'My Administration',
+    'welcome_sign': 'Welcome to the Admin Area',
+}
 AUTHENTICATION_BACKENDs = [
     'django.countrib.auth.backends.ModelBackend'
 ]
