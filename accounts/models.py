@@ -1,14 +1,17 @@
 from django.contrib.auth.models import User
+from phonenumber_field.modelfields import PhoneNumberField
 from django.db import models
 
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name= 'profile')
+    image = models.ImageField(upload_to='profile_pics/', default='default.jpg')
+    date_of_barth= models.DateField( auto_now=False, auto_now_add=False, blank=True, null=True)
+    phone_number = PhoneNumberField(blank=True, null=True)
     friends = models.ManyToManyField('self', symmetrical=True, blank=True)
     two_step_auth = models.BooleanField(default= False)
     
-
     def __str__(self):
         return self.user.username
 

@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'notifications',
     'friends',
     'authentication',
+    'home',
+    'phonenumber_field',
 ]
 
 JAZZMIN_SETTINGS = {
@@ -79,6 +81,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'home.context_processor.profile',
             ],
         },
     },

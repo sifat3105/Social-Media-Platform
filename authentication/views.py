@@ -123,12 +123,12 @@ def User_Registration(request):
         form = UserRegistrationForm(form_data)
         if form.is_valid():
             user = form.save(commit=False)
+            user.username = username
             user.is_active = False
             user.save()
             send_otp_to_user(user)
             return redirect('verify_otp', user_id=user.id)
         else:
-            print(form.errors,'this is erorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr')
             return render(request, 'auth/registration_form.html',{'error':form.errors})
             
     else:
@@ -187,3 +187,14 @@ def password_reset(request, otp_code):
         
     return render(request, 'auth/password_reset.html')
     
+    
+    
+    
+from django.http import JsonResponse
+
+def my_view(request):
+    data = {
+        'key': 'value',
+        'foo': 'bar'
+    }
+    return JsonResponse(data)
